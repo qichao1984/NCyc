@@ -4,6 +4,9 @@ Nitrogen (N) cycle is one of the most important biogeochemical cycles in the Ear
 Here, protein sequences for NCyc gene families were recruited from multiple public databases such as UniProt, KEGG, COG, eggNOG, and the SEED. The NCyc database contains a total of 68 gene (sub)families and covers  eight N cycle processes with 84,759 and 219,146 representative sequences at 95% and 100% identity cutoffs, respectively. We also identified 1,958 homologous orthology groups and included corresponding sequences in the database to avoid false positive assignments due to “small database” issues. 
 
 There are three files generated for NCyc:
+
 <b>1. NCyc_100.faa.gz</b>: fasta format representative sequences obtained by clustering curated sequences at 100% sequence identity. This file can be used for "BLAST" searching NCyc genes in shotgun metagenomes.
+
 <b>2. NCyc_95.faa.gz</b>: fasta format representative sequences obtained by clustering curated sequences at 95% sequence identity. This file can be used for "BLAST" searching NCyc genes in shotgun metagenomes.
+
 <b>3. id2gene.map</b>: a mapping file that maps sequence IDs to gene names, only sequences belonging to NCyc gene families are included. Sequences for NCyc homologs are not included. This file is used to generate NCyc profiles from BLAST-like results against the NCyc database. 
