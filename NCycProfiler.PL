@@ -115,7 +115,7 @@ while (<FILE>) {
   chomp;
   my @items = split( "\t", $_ );
   $size{ $items[0] } = $items[1];
-  push( @sizes, $items[3] );
+  push( @sizes, $items[1] );
 }
 close FILE;
 @sizes = sort { $a <=> $b } @sizes;
