@@ -14,12 +14,20 @@ Three files are generated for NCyc:
 
 Example for using NCycProfiler.PL:
 perl NCycProfiler.pl -d <workdir> -m <diamond|usearch|blast> -f <filetype> -s <seqtype> -si <sample size info file> -rs <random sampling size> -o <outfile>
+  
 Detailed explanations: 
+
 -d : specify the directory where your fasta/fastq (or gzipped) files are located. 
+
 -m : specify the database searching program you plan to use, currently diamond, usearch and blast are supported. 
+
 -f : specify the extensions of your sequence files, e.g. fastq, fastq.gz, fasta,fasta.gz, fq, fq.gz, fa, fa.gz
+
 -s : sequence type, nucl or prot
+
 -si: a tab delimited file containing the sample/file name and the number of sequences they have
+
 -rs: specify the number of sequences for random subsampling, if not specified, the lowest number in -si will be used.
+
 -o : the output file for N cycle gene profiles.   
   
