@@ -12,7 +12,8 @@ Three files are generated for NCyc:
 <b>3. id2gene.map</b>: a mapping file that maps sequence IDs to gene names, only sequences belonging to NCyc gene families are included. Sequences for NCyc homologs are not included. This file is used to generate NCyc profiles from BLAST-like results against the NCyc database. 
 
 
-Example for using NCycProfiler.PL:
+
+<b>Example for using NCycProfiler.PL:</b>
 perl NCycProfiler.pl -d <workdir> -m <diamond|usearch|blast> -f <filetype> -s <seqtype> -si <sample size info file> -rs <random sampling size> -o <outfile>
   
 Detailed explanations: 
