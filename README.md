@@ -14,6 +14,7 @@ Three files are generated for NCyc:
 
 
 <b>Example for using NCycProfiler.PL:</b>
+
 perl NCycProfiler.pl -d <workdir> -m <diamond|usearch|blast> -f <filetype> -s <seqtype> -si <sample size info file> -rs <random sampling size> -o <outfile>
   
 Detailed explanations: 
