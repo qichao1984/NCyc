@@ -48,6 +48,7 @@ if ( $method eq "diamond" ) {
       if $seqtype eq "nucl";
     system("$diamond blastp -k 1 -e 0.0001 -p 5 -d data/NCyc_100 -q $file -o $out")
       if $seqtype eq "prot";
+    system("cp $out ./");
   }
 }
 elsif ( $method eq "usearch" ) {
@@ -60,6 +61,7 @@ elsif ( $method eq "usearch" ) {
     my $out = $file;
     $out =~ s/$filetype/usearch/;
     system("$usearch -usearch_global $file -db data/NCyc_100.faa -id 0.3 -blast6out $out");
+    system("cp $out ./");
   }
 }
 elsif ( $method eq "blast" ) {
@@ -76,6 +78,7 @@ elsif ( $method eq "blast" ) {
       if $seqtype eq "prot";
     system("blastall -p blastx -d data/NCyc_100.faa -i $file -o $out -m 8 -e 1e-4 -b 1 -v 1")
       if $seqtype eq "nucl";
+    system("cp $out ./");
   }
 }
 
@@ -90,8 +93,12 @@ close FILE;
 
 my %abundance;
 my %samples;
-foreach my $file ( glob("*diamond") ) {
-  $file =~ /(.*?)\.diamond/;
+my @sfiles=glob("*diamond") if $method eq "diamond";
+@sfiles=glob("*usearch") if $method eq "usearch";
+@sfiles=glob("*blast") if $method eq "blast";
+die "No diamond/usearch/blast files were detected!\n" if $#sfiles==-1;
+foreach my $file ( @sfiles ) {
+  $file =~ /(.*?)\.$method/;
   my $sample = $1;
   $samples{$sample} = 1;
   my %hit;
@@ -118,6 +125,10 @@ while (<FILE>) {
   push( @sizes, $items[1] );
 }
 close FILE;
+foreach my $sample(keys %samples){
+  die "$sample was not found in $sampleinfo, please check!\n" if !$size{$sample};
+}
+
 @sizes = sort { $a <=> $b } @sizes;
 my $rs = $sizes[0] if !defined $randomsampling;
 $rs = $randomsampling if defined $randomsampling;
