@@ -27,7 +27,7 @@ Detailed explanations:
 
 -s : sequence type, nucl or prot
 
--si: a tab delimited file containing the sample/file name and the number of sequences they have
+-si: a tab delimited file containing the sample/file name and the number of sequences they have, note that no file extensions should be included here.
 
 -rs: specify the number of sequences for random subsampling, if not specified, the lowest number in -si will be used.
 
