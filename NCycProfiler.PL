@@ -38,8 +38,8 @@ if ( !defined $workdir
 my (@files);
 if ( $method eq "diamond" ) {
   die "Please specify the location of diamond!" if !-e $diamond;
-  @files = glob("*$filetype");
-  my $diamond_db = "$diamond makedb --in data/NCyc_100.faa --db NCyc_100";
+  @files = glob("$workdir/*$filetype");
+  my $diamond_db = "$diamond makedb --in data/NCyc_100.faa --db data/NCyc_100";
   system("$diamond_db");
   foreach my $file (@files) {
     my $out = $file;
@@ -56,7 +56,7 @@ elsif ( $method eq "usearch" ) {
   if ( $filetype =~ /gz/ ) {
     die "Only fastq and fasta files are supported by usearch!\n";
   }
-  @files = glob("*$filetype");
+  @files = glob("$workdir/*$filetype");
   foreach my $file (@files) {
     my $out = $file;
     $out =~ s/$filetype/usearch/;
@@ -69,7 +69,7 @@ elsif ( $method eq "blast" ) {
   if ( $filetype =~ /gz|fastq/ ) {
     die "Only fasta files are supported by blast program!";
   }
-  @files = glob("*$filetype");
+  @files = glob("$workdir/*$filetype");
   system("$formatdb -i data/NCyc_100.faa -p T");
   foreach my $file (@files) {
     my $out = $file;
