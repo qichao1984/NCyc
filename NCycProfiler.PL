@@ -83,7 +83,7 @@ elsif ( $method eq "blast" ) {
 }
 
 my %id2gene;
-open( FILE, "data/id2gene.map" ) || die "#1\n";
+open( FILE, "data/id2gene.map.2019Jul" ) || die "#1\n";
 while (<FILE>) {
   chomp;
   my @items = split( "\t", $_ );
