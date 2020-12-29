@@ -93,12 +93,12 @@ close FILE;
 
 my %abundance;
 my %samples;
-my @sfiles=glob("*diamond") if $method eq "diamond";
-@sfiles=glob("*usearch") if $method eq "usearch";
-@sfiles=glob("*blast") if $method eq "blast";
+my @sfiles=glob("$workdir/*diamond") if $method eq "diamond";
+@sfiles=glob("$workdir/*usearch") if $method eq "usearch";
+@sfiles=glob("$workdir/*blast") if $method eq "blast";
 die "No diamond/usearch/blast files were detected!\n" if $#sfiles==-1;
 foreach my $file ( @sfiles ) {
-  $file =~ /(.*?)\.$method/;
+  $file =~ /$workdir\/(.*?)\.$method/;
   my $sample = $1;
   $samples{$sample} = 1;
   my %hit;
