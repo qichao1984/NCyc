@@ -35,6 +35,8 @@ if ( !defined $workdir
   die;
 }
 
+$workdir=~s/\/$//;
+
 my (@files);
 if ( $method eq "diamond" ) {
   die "Please specify the location of diamond!" if !-e $diamond;
